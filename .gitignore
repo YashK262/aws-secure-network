@@ -3,6 +3,7 @@
 *.tfstate
 *.tfstate*
 .terraform.tfstate.lock.info
+.terraform.lock.hcl
 
 # Ignore local variable sheets that might hold custom credentials
 *.tfvars
