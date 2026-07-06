@@ -1,4 +1,4 @@
-#Configure the Terraform AWS Provider Framework
+#Configure Cloud Provider
 terraform {
   required_providers {
     aws = {
