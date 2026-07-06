@@ -34,7 +34,7 @@ output "server_public_ip"{
   description = "Public ip of the ec2 instance"
   value = aws_instance.web_server.public_ip
 }
-#Creating fowrarding proxy
+#Creating forwarding proxy
 resource "aws_instance" "egress_proxy" {
   ami = "ami-0d351f1b760a30161"
   instance_type = "t3.micro"
