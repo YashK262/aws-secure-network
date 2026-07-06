@@ -1,0 +1,13 @@
+# Local hidden runtime configurations
+.terraform/
+*.tfstate
+*.tfstate*
+.terraform.tfstate.lock.info
+
+# Ignore local variable sheets that might hold custom credentials
+*.tfvars
+*.tfvars.json
+
+# Ignore temporary diagnostic files
+*.log
+.trivy/     
