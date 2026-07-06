@@ -1,4 +1,4 @@
-#Define the Automated Production Core VPC Box
+#Define the Corporate_core VPC
 resource "aws_vpc" "corporate_core" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
