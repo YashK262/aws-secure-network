@@ -28,14 +28,14 @@ resource "aws_vpc_security_group_ingress_rule" "allow_https"{
   ip_protocol = "tcp"
   description = "Allow https traffic inbound"
 }
-#Create firewall rule to allow all outbound traffic
+#Create firewall rule to allow outbound traffic
 resource "aws_vpc_security_group_egress_rule" "allow_web_outbound_to_proxy" {
   security_group_id = aws_security_group.public_web_sg.id
   cidr_ipv4 = "${aws_instance.egress_proxy.private_ip}/32"
   ip_protocol = "tcp"
   from_port = 3128
   to_port = 3128
-  description = "Outbound streams strictly pinned to squid proxy"
+  description = "Outbound streams pinned to squid proxy"
 }
 #Declaring proxy security group
 resource "aws_security_group" "proxy_sg" {
