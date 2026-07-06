@@ -33,7 +33,7 @@ resource "aws_kms_key" "log_encryption_key" {
     ]
   })
 }
-#Assign an alias to the key
+#Assign an alias to the Customer Mananged Key
 resource "aws_kms_alias" "log_key_alias" {
   name = "alias/corporate-flow-logs-key"
   target_key_id = aws_kms_key.log_encryption_key.key_id
