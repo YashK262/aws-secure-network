@@ -2,28 +2,7 @@
 
 A production-ready, highly isolated AWS infrastructure built entirely via modular Terraform (HCL). This project demonstrates a Shift Left engineering posture, transitioning an insecure baseline environment into a secure infrastructure tier with 0 Misconfigurations, verified using the Trivy Static Application Security Testing (SAST) compliance engine.
 
-Architecture -[ Public Internet (Repo Mirrors) ]
-                                                ▲
-                                                │ (Port 443 Outbound)
-                                     ┌─────────────────────┐
-                                     │  Internet Gateway   │
-                                     └──────────▲──────────┘
-                                                │
-    ┌───────────────────────────────────────────┼────────────────────────┐
-    │ Corporate VPC                             │                        │
-    │                                           │                        │
-    │  ┌────────────────────────────────────────┴─────────────────────┐  │
-    │  │ Isolated Subnet Block (10.0.1.0/24)                          │  │
-    │  │                                                              │  │
-    │  │   ┌────────────────────┐            ┌────────────────────┐   │  │
-    │  │   │ Production Server  │───────────►│ Secure Squid Proxy │   │  │
-    │  │   │ (Isolated Egress)  │ (Port 3128)│ (Allowed Outbound) │   │  │
-    │  │   └────────────────────┘            └────────────────────┘   │  │
-    │  └──────────────────────────────────────────────────────────────┘  │
-    │                                                                    │
-    │  TELEMETRY AUDIT:                                                  │
-    │  [ VPC Flow Logs ] ──► [ CloudWatch Logs ] ◄── [ Encrypted by KMS ]│
-    └────────────────────────────────────────────────────────────────────┘
+Architecture - ![Network Architecture](architecture.png)
 
 Phase 1: The Functional Architecture Baseline
 The project began by constructing a core multi-tier infrastructure framework to establish connectivity:
