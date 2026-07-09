@@ -1,0 +1,29 @@
+name: Pipeline creation and scanning
+
+#Trigger pipeline on every push or pull request
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  trivy-compliance-scan:
+    name: SAST
+    runs-on: ubuntu-latest
+
+    steps:
+    #Download a copy of our code repo onto the runner disk
+    - name: Checkout Code Registry
+      uses: actions/checkout@v7
+
+    #Execute Trivy SAST scanning
+    - name: Run Trivy scanning
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'config'
+        scan-ref: '.'
+        #Throw an exit code 1 for Critical or High alerts
+        exit-code: '1'
+        severity: 'HIGH,CRITICAL'
+        limit-severities-for-sarif: true
